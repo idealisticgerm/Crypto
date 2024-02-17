@@ -22,8 +22,7 @@ body {
   background-image: 
     radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
     radial-gradient(at 50% 100%, hsla(225,39%,25%,1) 0, transparent 50%); */
-    background-image: linear-gradient(to right, black 0%, #503b8b 100%);
-
+  background-image: linear-gradient(to right, black 0%, #503b8b 100%);
 }
 
 .gradient-bg-transactions {
@@ -31,8 +30,7 @@ body {
   background-image: 
     radial-gradient(at 0% 100%, hsla(253,16%,7%,1) 0, transparent 50%), 
     radial-gradient(at 50% 0%, hsla(225,39%,25%,1) 0, transparent 50%); */
-    background-image: linear-gradient(to right, black 0%, #503b8b 100%);
-
+  background-image: linear-gradient(to right, black 0%, #503b8b 100%);
 }
 
 .gradient-bg-footer {
@@ -40,8 +38,7 @@ body {
   background-image: 
     radial-gradient(at 0% 100%, hsla(253,16%,7%,1) 0, transparent 53%), 
     radial-gradient(at 50% 150%, hsla(339,49%,30%,1) 0, transparent 50%); */
-    background-image: linear-gradient(to right, black 0%, #503b8b 100%);
-
+  background-image: linear-gradient(to right, black 0%, #503b8b 100%);
 }
 
 .blue-glassmorphism {
@@ -63,9 +60,12 @@ body {
 }
 
 .eth-card {
-  background-color: #ff9452;  /* New color: Soft orange */
-  background-image: 
-    radial-gradient(at 83% 67%, rgb(255, 94, 247) 0, transparent 58%),
+  background-color: #ff9452; /* New color: Soft orange */
+  background-image: radial-gradient(
+      at 83% 67%,
+      rgb(255, 94, 247) 0,
+      transparent 58%
+    ),
     radial-gradient(at 67% 20%, hsl(291, 76%, 71%) 0, transparent 59%),
     radial-gradient(at 88% 35%, hsl(122, 65%, 65%) 0, transparent 50%),
     radial-gradient(at 31% 91%, hsl(269, 80%, 80%) 0, transparent 52%),
@@ -74,12 +74,30 @@ body {
     radial-gradient(at 53% 75%, hsl(340, 76%, 68%) 0, transparent 45%);
 }
 
-
 .text-gradient {
   background-color: #fff;
-  background-image: radial-gradient(at 4% 36%, hsla(0,0%,100%,1) 0, transparent 53%), radial-gradient(at 100% 60%, rgb(0, 0, 0) 0, transparent 50%);
+  background-image: radial-gradient(
+      at 4% 36%,
+      hsla(0, 0%, 100%, 1) 0,
+      transparent 53%
+    ),
+    radial-gradient(at 100% 60%, rgb(0, 0, 0) 0, transparent 50%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.transit:hover {
+  /* @apply animate-spin */
+  animation: spin 15s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @tailwind base;

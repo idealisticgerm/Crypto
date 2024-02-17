@@ -17,6 +17,7 @@
     "axios": "^1.6.5",
     "chart.js": "^4.4.1",
     "ethers": "^6.8.1",
+    "gsap": "^3.12.5",
     "html-react-parser": "^5.1.1",
     "millify": "^6.1.0",
     "moment": "^2.30.1",

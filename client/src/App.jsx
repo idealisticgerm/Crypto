@@ -1,4 +1,4 @@
-import { Navbar, Welcome, Footer, Services, Transcations, Loader, WelcomeWrapper } from "./components";
+import { Navbar, Welcome, Footer, Services, Transcations, Loader, WelcomeWrapper, Cryptocurrencies } from "./components";
 import Home from './pages/Home';
 import {
   BrowserRouter,
@@ -26,6 +26,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/welcome" element={<WelcomeWrapper />} />
+            <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
 
 
           </Routes>
