@@ -25,16 +25,14 @@ const Navbar = () => {
         {[
           { title: 'Home', to: '/' },
           { title: 'CryptoCurrencies', to: '/Cryptocurrencies' },
-          { title: 'Exchanges', to: '/exchange' },
+          { title: 'Exchanges', to: '/exchanges' },
           { title: 'News', to: '/news' },
           { title: 'Wallets', to: '/welcome' },
         ].map((item, index) => (
           <NavbarItem key={item.title + index} title={item.title} to={item.to} />
         ))}
 
-        {/* <li className='bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]'>
-          <Link to="/login">Login</Link>
-        </li> */}
+
       </ul>
 
       <div className="flex relative">

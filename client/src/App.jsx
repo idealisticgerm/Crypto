@@ -1,4 +1,5 @@
-import { Navbar, Welcome, Footer, Services, Transcations, Loader, WelcomeWrapper, Cryptocurrencies } from "./components";
+import { Navbar, Welcome, Footer, Services, Transcations, Loader, WelcomeWrapper, Cryptocurrencies, CryptoDetails, News } from "./components";
+import Exchanges from "./components/Exchanges";
 import Home from './pages/Home';
 import {
   BrowserRouter,
@@ -27,6 +28,11 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/welcome" element={<WelcomeWrapper />} />
             <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
+            <Route path="/crypto/:coinId" element={<CryptoDetails />} />
+            <Route path="/exchanges" element={<Exchanges />} />
+            <Route path="/news" element={<News />} />
+
+
 
 
           </Routes>

@@ -1,42 +1,64 @@
 import React from 'react'
 
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi'
+import { Link } from 'react-router-dom';
 
 const News = ({ simplified }) => {
+  const { data: newsResponse, isLoading, isError, error } = useGetCryptoNewsQuery();
 
-  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 10 : 12 })
+  if (isLoading) return 'Loading...';
+  if (isError) return `Error: ${error.toString()}`;
+
+  const { data: cryptoNews } = newsResponse || {};
+
+  if (!cryptoNews || !Array.isArray(cryptoNews)) return 'No data available';
   console.log(cryptoNews)
 
-  if (!cryptoNews?.articles) return 'Loading....'
 
+  const limitedNews = simplified ? cryptoNews.slice(0, 8) : cryptoNews;
   return (
-    <div className='m-auto flex flex-wrap gap-4 justify-center'>
+    <div className='mx-auto flex flex-wrap gap-4 justify-center mb-10'>
       {
-        cryptoNews.articles.map((news) => (
-          <div
-            className="relative flex w-80 max-w-[20rem] flex-col rounded-xl bg-violet-900 bg-clip-border text-white shadow-none  border hover:bg-violet-700 hover:-translate-y-0.5">
-            <div
-              className="relative flex items-center gap-4 p-3 overflow-hidden text-white bg-transparent shadow-none rounded-xl bg-clip-border">
-              <div className="flex w-full flex-col gap-0.5">
-                <div className="flex items-center justify-between">
-                <img
-                    src=''
-                    alt="Tania Andrew"
-                    className="relative inline-block h-[58px] w-[58px] !rounded-full  object-cover object-center" />
-                  <h6
-                    className="block font-sans text-l antialiased font-normal leading-snug tracking-normal text-blue-gray-900">
-                    {news.title}
-                  </h6>
-                  
+        limitedNews.map((news) => (
 
-                </div>
 
-              </div>
+
+          <div className='bg-violet-950 border rounded-xl'>
+            <div className="flex flex-col max-w-md bg-violet-8  text-gray-300 px-8 py-6 rounded-xl space-y-5 items-center justify-center ">
+              <img className="w-full rounded-md" src={news.thumbnail} alt="motivation" />
+              <h3 className="font-serif font-semibold text-gray-200 text-lgF text-center line-clamp-2">
+                {news.title}</h3>
+              <span className="text-center">
+                {new Date(news.createdAt).toLocaleString('en-IN', {
+                  timeZone: 'Asia/Kolkata',
+                  dateStyle: 'medium',
+                  timeStyle: 'short',
+                })}
+              </span>
+              <Link to={news.url}
+                target="_blank"
+              >
+                <button className="px-24 py-4 bg-gray-500 rounded-md text-white text-sm focus:border-transparent">Read More...</button>
+              </Link>
             </div>
           </div>
+
         ))
       }
-    </div>
+
+
+
+      <style>
+        {`
+          .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        `}
+      </style>
+    </div >
 
 
 

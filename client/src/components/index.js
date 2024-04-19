@@ -6,5 +6,5 @@ export { default as Transcations } from "./Transactions";
 export { default as Welcome } from "./Welcome";
 export { default as WelcomeWrapper } from "./WelcomeWrapper";
 export { default as Cryptocurrencies } from "./Cryptocurrencies";
+export { default as CryptoDetails } from "./CryptoDetails";
 export { default as News } from "./News";
-

@@ -24,6 +24,18 @@ const Cryptocurrencies = ({ simplified }) => {
     }, [cryptosList, searchTerm]);
     // console.log(cryptos)
 
+    useEffect(() => {
+        const fetchCoins = async () => {
+            const { coins } = await axios.get(
+                "https://api.coingecko.com/api/v3/coins/list"
+            );
+            console.log(coins);
+        };
+
+        fetchCoins();
+    }, [])
+
+
     if (isFetching) return <Loader />
 
     return (
@@ -50,11 +62,11 @@ const Cryptocurrencies = ({ simplified }) => {
             <div className='flex flex-wrap gap-5 justify-center my-3'>
 
                 {cryptos?.map((currency) => (
-                    <Link  key={currency.uuid} to={`/crypto/${currency.uuid}`}>
+                    <Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
                         <div
-                            className="relative flex w-80 max-w-[20rem] flex-col rounded-xl bg-violet-900 bg-clip-border text-white shadow-none  border hover:bg-violet-700 hover:-translate-y-0.5">
+                            className="relative flex w-80 max-w-[20rem] flex-col rounded-xl bg-violet-900 bg-clip-border text-gray-300 shadow-none  border hover:bg-violet-700 hover:-translate-y-0.5">
                             <div
-                                className="relative flex items-center gap-4 p-3 overflow-hidden text-white bg-transparent shadow-none rounded-xl bg-clip-border">
+                                className="relative flex items-center gap-4 p-3 overflow-hidden text-gray-200 bg-transparent shadow-none rounded-xl bg-clip-border">
                                 <div className="flex w-full flex-col gap-0.5">
                                     <div className="flex items-center justify-between">
                                         <h5
@@ -63,7 +75,7 @@ const Cryptocurrencies = ({ simplified }) => {
                                         </h5>
                                         <img
                                             src={currency.iconUrl}
-                                            alt="Tania Andrew"
+                                            alt="Coin"
                                             className="relative inline-block h-[58px] w-[58px] !rounded-full  object-cover object-center" />
 
                                     </div>
@@ -73,10 +85,10 @@ const Cryptocurrencies = ({ simplified }) => {
                             {/* <hr /> */}
                             <div className="p-3 mb-6 ">
                                 <p className="block font-sans text-base antialiased font-medium leading-relaxed text-inherit my-2">
-                                    Price: {millify(currency.price)}
+                                    Price: $ {millify(currency.price)}
                                 </p>
                                 <p className="block font-sans text-base antialiased font-medium leading-relaxed text-inherit my-2">
-                                    MarketCap: {millify(currency.marketCap)}
+                                    MarketCap: $ {millify(currency.marketCap)}
                                 </p>
                                 <p className="block font-sans text-base antialiased font-medium leading-relaxed text-inherit">
                                     DailyChange: {currency.change}%
@@ -95,6 +107,10 @@ const Cryptocurrencies = ({ simplified }) => {
 }
 
 export default Cryptocurrencies;
+
+
+import axios from "axios";
+
 
 
 

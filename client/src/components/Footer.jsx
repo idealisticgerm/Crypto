@@ -1,6 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logo from "../../images/logo.png";
+const NavbarItem = ({ title, classProps, to }) => {
+  return (
+    <li className={`mx-4 cursor-pointer ${classProps}`}>
+      <Link to={to}>{title}</Link>
+    </li>
+  );
+};
 
 const Footer = () => (
   <div className="w-full flex md:justify-center justify-between items-center flex-col p-4 gradient-bg-footer">
@@ -8,12 +16,18 @@ const Footer = () => (
       <div className="flex flex-[0.5] justify-center items-center">
         <img src={logo} alt="logo" className="w-32" />
       </div>
-      <div className="flex flex-1 justify-evenly items-center flex-wrap sm:mt-0 mt-5 w-full">
-        <p className="text-white text-base text-center mx-2 cursor-pointer">Market</p>
-        <p className="text-white text-base text-center mx-2 cursor-pointer">Exchange</p>
-        <p className="text-white text-base text-center mx-2 cursor-pointer">Tutorials</p>
-        <p className="text-white text-base text-center mx-2 cursor-pointer">Wallets</p>
-      </div>
+      <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
+        {[
+
+          { title: 'CryptoCurrencies', to: '/Cryptocurrencies' },
+          { title: 'Exchanges', to: '/exchanges' },
+          { title: 'News', to: '/news' },
+        ].map((item, index) => (
+          <NavbarItem key={item.title + index} title={item.title} to={item.to} />
+        ))}
+
+
+      </ul>
     </div>
 
     <div className="flex justify-center items-center flex-col mt-5">
